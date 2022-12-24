@@ -32,8 +32,10 @@ class EditScreen extends StatelessWidget {
         child: Column(
           children: [
             TextFormField(
+              keyboardType: TextInputType.number,
               controller: nameController,
               decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.person),
                   labelText: "Name",
                   border: OutlineInputBorder(),
                   hintText: "Edit name"),
@@ -44,6 +46,7 @@ class EditScreen extends StatelessWidget {
             TextFormField(
               controller: classController,
               decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.book),
                   border: OutlineInputBorder(),
                   hintText: "Edit Class",
                   labelText: "Class"),
@@ -52,8 +55,10 @@ class EditScreen extends StatelessWidget {
               height: 15,
             ),
             TextFormField(
+              keyboardType: TextInputType.number,
               controller: phoneController,
               decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.phone),
                   border: OutlineInputBorder(),
                   hintText: "Edit Phone number",
                   labelText: "Phone"),
@@ -64,6 +69,7 @@ class EditScreen extends StatelessWidget {
             TextFormField(
               controller: schoolController,
               decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.school),
                   border: OutlineInputBorder(),
                   hintText: "Edit School",
                   labelText: "School"),

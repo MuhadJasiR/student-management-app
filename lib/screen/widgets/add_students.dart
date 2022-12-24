@@ -52,6 +52,7 @@ class _add_StudentState extends State<add_Student> {
               height: 15,
             ),
             TextFormField(
+              keyboardType: TextInputType.number,
               controller: classController,
               decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -71,6 +72,7 @@ class _add_StudentState extends State<add_Student> {
               height: 15,
             ),
             TextFormField(
+              keyboardType: TextInputType.number,
               controller: phoneController,
               decoration: InputDecoration(
                   border: OutlineInputBorder(
