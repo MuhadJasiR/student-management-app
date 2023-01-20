@@ -32,7 +32,6 @@ class EditScreen extends StatelessWidget {
         child: Column(
           children: [
             TextFormField(
-              keyboardType: TextInputType.number,
               controller: nameController,
               decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.person),
@@ -87,12 +86,12 @@ class EditScreen extends StatelessWidget {
                       studentClass: schoolController.text);
                   updateStudentModel(index, newDetails);
                   Navigator.push(context, MaterialPageRoute(builder: (ctx) {
-                    return const List_students();
+                    return const ListStudents();
                   }));
 
                   // Navigator.pop(context);
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text("Data Updated"),
+                    content: Text("Student Data Updated"),
                     backgroundColor: Colors.purple,
                     duration: Duration(seconds: 1),
                   ));

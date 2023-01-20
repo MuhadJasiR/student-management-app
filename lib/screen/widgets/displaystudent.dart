@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:students_profile/database/model/data_model.dart';
 import 'package:students_profile/screen/widgets/edit_student.dart';
 
 class DisplayScreen extends StatelessWidget {

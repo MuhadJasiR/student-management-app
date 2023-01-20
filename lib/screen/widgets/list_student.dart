@@ -5,8 +5,8 @@ import 'package:students_profile/screen/widgets/add_students.dart';
 import 'package:students_profile/screen/widgets/displaystudent.dart';
 import 'package:students_profile/screen/widgets/search_student.dart';
 
-class List_students extends StatelessWidget {
-  const List_students({super.key});
+class ListStudents extends StatelessWidget {
+  const ListStudents({super.key});
 
   @override
   Widget build(BuildContext context) {

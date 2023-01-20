@@ -52,7 +52,6 @@ class _add_StudentState extends State<add_Student> {
               height: 15,
             ),
             TextFormField(
-              keyboardType: TextInputType.number,
               controller: classController,
               decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -116,7 +115,7 @@ class _add_StudentState extends State<add_Student> {
                 if (formKey.currentState!.validate()) {
                   // onAddStudentButtonCLicked();
                   Navigator.pop(context, MaterialPageRoute(builder: (ctx) {
-                    return const List_students();
+                    return const ListStudents();
                   }));
                 }
               },
