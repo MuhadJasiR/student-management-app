@@ -22,7 +22,7 @@ class DisplayScreen extends StatelessWidget {
           title: const Text("Student Details"),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(55.0),
           child: ListView(
             children: [
               const CircleAvatar(
@@ -36,33 +36,43 @@ class DisplayScreen extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              Text(
-                "Name      : $name",
-                style: const TextStyle(fontSize: 20),
+              Center(
+                child: Text(
+                  "Name: $name",
+                  style: const TextStyle(fontSize: 20),
+                ),
               ),
               const SizedBox(
                 height: 10,
               ),
-              Text(
-                "Class        : $studentClass",
-                style: const TextStyle(fontSize: 20),
+              Center(
+                child: Text(
+                  "Contacts  :$phone",
+                  style: const TextStyle(fontSize: 20),
+                ),
               ),
               const SizedBox(
                 height: 10,
               ),
-              Text(
-                "Contacts  :$phone",
-                style: const TextStyle(fontSize: 20),
+              Center(
+                child: Text(
+                  "School:$school",
+                  style: const TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 10,
               ),
-              Text(
-                "School      :$school",
-                style: const TextStyle(fontSize: 20),
+              Center(
+                child: Text(
+                  "Class:$studentClass",
+                  style: const TextStyle(fontSize: 20),
+                ),
               ),
               const SizedBox(
-                height: 10,
+                height: 40,
               ),
               ElevatedButton.icon(
                   onPressed: () {

@@ -28,7 +28,7 @@ class EditScreen extends StatelessWidget {
         title: const Text("Edit Student"),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(55.0),
         child: Column(
           children: [
             TextFormField(
@@ -74,7 +74,7 @@ class EditScreen extends StatelessWidget {
                   labelText: "School"),
             ),
             const SizedBox(
-              height: 15,
+              height: 25,
             ),
             ElevatedButton.icon(
                 onPressed: () {
@@ -89,7 +89,6 @@ class EditScreen extends StatelessWidget {
                     return const ListStudents();
                   }));
 
-                  // Navigator.pop(context);
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text("Student Data Updated"),
                     backgroundColor: Colors.purple,

@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -28,7 +30,7 @@ class _add_StudentState extends State<add_Student> {
     return Scaffold(
       appBar: AppBar(title: const Text("Add Details")),
       body: Padding(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.all(55),
         child: Form(
           key: formKey,
           child: Column(children: [
