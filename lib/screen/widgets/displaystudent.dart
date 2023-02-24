@@ -22,73 +22,55 @@ class DisplayScreen extends StatelessWidget {
           title: const Text("Student Details"),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(55.0),
-          child: ListView(
-            children: [
-              const CircleAvatar(
-                radius: 80,
-                backgroundImage: NetworkImage(
-                    "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80"),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Center(
-                child: Text(
-                  "Name: $name",
-                  style: const TextStyle(fontSize: 20),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Center(
-                child: Text(
-                  "Contacts  :$phone",
-                  style: const TextStyle(fontSize: 20),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Center(
-                child: Text(
-                  "School:$school",
-                  style: const TextStyle(
-                    fontSize: 20,
+          padding: const EdgeInsets.all(15.0),
+          child: SizedBox(
+            width: double.infinity,
+            height: 600,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 120),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const CircleAvatar(
+                    radius: 80,
+                    backgroundImage: NetworkImage(
+                        "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80"),
                   ),
-                ),
+                  Text(
+                    "Name: $name",
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    "School:$school",
+                    style: const TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                  Text(
+                    "Class:$studentClass",
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    "Contacts  :$phone",
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  ElevatedButton.icon(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: ((context) {
+                          return EditScreen(
+                              name: name,
+                              studentClass: studentClass,
+                              phone: phone,
+                              school: school,
+                              index: index);
+                        })));
+                      },
+                      icon: const Icon(Icons.edit),
+                      label: const Text("Edit"))
+                ],
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              Center(
-                child: Text(
-                  "Class:$studentClass",
-                  style: const TextStyle(fontSize: 20),
-                ),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: ((context) {
-                      return EditScreen(
-                          name: name,
-                          studentClass: studentClass,
-                          phone: phone,
-                          school: school,
-                          index: index);
-                    })));
-                  },
-                  icon: const Icon(Icons.edit),
-                  label: const Text("Edit"))
-            ],
+            ),
           ),
         ));
   }

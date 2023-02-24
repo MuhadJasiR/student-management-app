@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:students_profile/database/functions/database_functions.dart';
 import 'package:students_profile/database/model/data_model.dart';
 import 'package:students_profile/screen/widgets/list_student.dart';
@@ -28,7 +29,7 @@ class EditScreen extends StatelessWidget {
         title: const Text("Edit Student"),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(55.0),
+        padding: const EdgeInsets.all(15.0),
         child: Column(
           children: [
             TextFormField(
@@ -84,9 +85,10 @@ class EditScreen extends StatelessWidget {
                       phone: phoneController.text,
                       school: schoolController.text,
                       studentClass: schoolController.text);
-                  updateStudentModel(index, newDetails);
+                  Provider.of<ProviderStudentModel>(context, listen: false)
+                      .updateStudentModel(index, newDetails);
                   Navigator.push(context, MaterialPageRoute(builder: (ctx) {
-                    return const ListStudents();
+                    return ListStudents();
                   }));
 
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

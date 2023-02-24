@@ -3,18 +3,14 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:students_profile/database/functions/database_functions.dart';
 import 'package:students_profile/database/model/data_model.dart';
 import 'package:students_profile/screen/widgets/list_student.dart';
 
-class add_Student extends StatefulWidget {
-  const add_Student({super.key});
+class add_Student extends StatelessWidget {
+  add_Student({super.key});
 
-  @override
-  State<add_Student> createState() => _add_StudentState();
-}
-
-class _add_StudentState extends State<add_Student> {
   final nameController = TextEditingController();
 
   final classController = TextEditingController();
@@ -30,7 +26,7 @@ class _add_StudentState extends State<add_Student> {
     return Scaffold(
       appBar: AppBar(title: const Text("Add Details")),
       body: Padding(
-        padding: const EdgeInsets.all(55),
+        padding: const EdgeInsets.all(10),
         child: Form(
           key: formKey,
           child: Column(children: [
@@ -113,11 +109,11 @@ class _add_StudentState extends State<add_Student> {
             ),
             ElevatedButton.icon(
               onPressed: () {
-                onAddStudentButtonCLicked();
+                onAddStudentButtonCLicked(context: context);
                 if (formKey.currentState!.validate()) {
                   // onAddStudentButtonCLicked();
                   Navigator.pop(context, MaterialPageRoute(builder: (ctx) {
-                    return const ListStudents();
+                    return ListStudents();
                   }));
                 }
               },
@@ -130,7 +126,7 @@ class _add_StudentState extends State<add_Student> {
     );
   }
 
-  Future<void> onAddStudentButtonCLicked() async {
+  Future<void> onAddStudentButtonCLicked({required context}) async {
     final name = nameController.text.trim();
     final studentClass = classController.text.trim();
     final phone = phoneController.text.trim();
@@ -145,6 +141,7 @@ class _add_StudentState extends State<add_Student> {
     final student = StudentModel(
         name: name, phone: phone, school: school, studentClass: studentClass);
     log('$name $phone $school $studentClass');
-    addStudent(student);
+    Provider.of<ProviderStudentModel>(context, listen: false)
+        .addStudent(student);
   }
 }
