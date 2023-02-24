@@ -2,10 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:students_profile/database/model/data_model.dart';
 
-// ValueNotifier<List<StudentModel>> studentListNotifier = ValueNotifier([]);
-
 class ProviderStudentModel with ChangeNotifier {
   List<StudentModel> studentList = [];
+
+  List foundUser = [];
+
+  void runFilter(String enteredKeyword) {
+    List result = [];
+    if (enteredKeyword.isEmpty) {
+      result = studentList;
+    } else {
+      result = studentList
+          .where((element) =>
+              element.name.toLowerCase().contains(enteredKeyword.toLowerCase()))
+          .toList();
+    }
+    foundUser = result;
+    notifyListeners();
+  }
 
   Future<void> addStudent(StudentModel value) async {
     final studentDB = await Hive.openBox<StudentModel>("student_db");

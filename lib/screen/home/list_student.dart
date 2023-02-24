@@ -1,24 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:students_profile/controller/core/constraints.dart';
 import 'package:students_profile/database/functions/database_functions.dart';
-import 'package:students_profile/database/model/data_model.dart';
-import 'package:students_profile/screen/widgets/add_students.dart';
-import 'package:students_profile/screen/widgets/displaystudent.dart';
-import 'package:students_profile/screen/widgets/search_student.dart';
+import 'package:students_profile/screen/addstudent/add_students.dart';
+import 'package:students_profile/screen/studentDetails/displaystudent.dart';
 
 class ListStudents extends StatelessWidget {
-  ListStudents({super.key});
+  const ListStudents({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<ProviderStudentModel>(context).studentList;
-    List foundUsers = [];
-
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
         Provider.of<ProviderStudentModel>(context, listen: false)
             .getAllStudents();
+        Provider.of<ProviderStudentModel>(context, listen: false).foundUser =
+            Provider.of<ProviderStudentModel>(context, listen: false)
+                .studentList;
       },
     );
     return SafeArea(
@@ -33,19 +32,22 @@ class ListStudents extends StatelessWidget {
           padding: const EdgeInsets.all(12.0),
           child: Column(
             children: [
-              const CupertinoSearchTextField(),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                width: double.infinity,
+                height: 45,
+                child: CupertinoSearchTextField(
+                  onChanged: ((value) =>
+                      Provider.of<ProviderStudentModel>(context, listen: false)
+                          .runFilter(value)),
+                ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              kHeight20,
               Expanded(child: Consumer<ProviderStudentModel>(
                   builder: ((context, value, child) {
-                return value.studentList.isNotEmpty
+                return value.foundUser.isNotEmpty
                     ? ListView.separated(
                         itemBuilder: (ctx, index) {
-                          final data = value.studentList[index];
+                          final data = value.foundUser[index];
                           return Card(
                             elevation: 10,
                             child: ListTile(
@@ -112,7 +114,7 @@ class ListStudents extends StatelessWidget {
                         separatorBuilder: (ctx, index) {
                           return const Divider();
                         },
-                        itemCount: value.studentList.length)
+                        itemCount: value.foundUser.length)
                     : Center(
                         child: Image.asset(
                           "asset/13659-no-data (1).gif",

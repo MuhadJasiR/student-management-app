@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:students_profile/controller/core/constraints.dart';
 import 'package:students_profile/database/functions/database_functions.dart';
 import 'package:students_profile/database/model/data_model.dart';
-import 'package:students_profile/screen/widgets/list_student.dart';
+import 'package:students_profile/screen/home/list_student.dart';
 
 class EditScreen extends StatelessWidget {
   const EditScreen(
@@ -40,9 +41,7 @@ class EditScreen extends StatelessWidget {
                   border: OutlineInputBorder(),
                   hintText: "Edit name"),
             ),
-            const SizedBox(
-              height: 15,
-            ),
+            kHeight15,
             TextFormField(
               controller: classController,
               decoration: const InputDecoration(
@@ -51,9 +50,7 @@ class EditScreen extends StatelessWidget {
                   hintText: "Edit Class",
                   labelText: "Class"),
             ),
-            const SizedBox(
-              height: 15,
-            ),
+            kHeight15,
             TextFormField(
               keyboardType: TextInputType.number,
               controller: phoneController,
@@ -63,9 +60,7 @@ class EditScreen extends StatelessWidget {
                   hintText: "Edit Phone number",
                   labelText: "Phone"),
             ),
-            const SizedBox(
-              height: 15,
-            ),
+            kHeight15,
             TextFormField(
               controller: schoolController,
               decoration: const InputDecoration(
@@ -74,9 +69,7 @@ class EditScreen extends StatelessWidget {
                   hintText: "Edit School",
                   labelText: "School"),
             ),
-            const SizedBox(
-              height: 25,
-            ),
+            kHeight15,
             ElevatedButton.icon(
                 onPressed: () {
                   StudentModel newDetails = StudentModel(
@@ -88,7 +81,7 @@ class EditScreen extends StatelessWidget {
                   Provider.of<ProviderStudentModel>(context, listen: false)
                       .updateStudentModel(index, newDetails);
                   Navigator.push(context, MaterialPageRoute(builder: (ctx) {
-                    return ListStudents();
+                    return const ListStudents();
                   }));
 
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

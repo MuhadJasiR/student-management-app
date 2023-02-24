@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
-import 'package:students_profile/controller/student_search_provider.dart';
+import 'package:students_profile/controller/Provider/student_search_provider.dart';
 import 'package:students_profile/database/functions/database_functions.dart';
 import 'package:students_profile/database/model/data_model.dart';
-import 'package:students_profile/screen/widgets/list_student.dart';
+import 'package:students_profile/screen/home/list_student.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

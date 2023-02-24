@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:students_profile/database/functions/database_functions.dart';
 import 'package:students_profile/database/model/data_model.dart';
-import 'package:students_profile/screen/widgets/list_student.dart';
+import 'package:students_profile/screen/home/list_student.dart';
 
 class add_Student extends StatelessWidget {
   add_Student({super.key});
