@@ -13,8 +13,9 @@ class ProviderStudentModel with ChangeNotifier {
       result = studentList;
     } else {
       result = studentList
-          .where((element) =>
-              element.name.toLowerCase().contains(enteredKeyword.toLowerCase()))
+          .where((element) => element.name
+              .toLowerCase()
+              .contains(enteredKeyword.toLowerCase().trim()))
           .toList();
     }
     foundUser = result;
